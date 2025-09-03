@@ -56,13 +56,13 @@ function cambiarTitulo() {
 
 //10. Cambiar párrafo (prompt) → Con prompt, pedir un texto nuevo y reemplazar el contenido del primer párrafo.
 function cambiarParrafo() {
-    const nuevoParrafo = prompt("escribe un parrafo nuevo");
+    let nuevoParrafo = prompt("escribe un parrafo nuevo");
     mainParagraph.innerText = nuevoParrafo;
 }
 
 //11. Agregar un párrafo → Insertar dinámicamente un nuevo <p> al final con texto fijo o pedido con prompt.
 function agregarParrafo() {
-    const parrafoExtra = prompt("digita un parrafo extra");
+    let parrafoExtra = prompt("digita un parrafo extra");
     extraParagraphs.innerText = parrafoExtra;
 }
 
@@ -78,6 +78,31 @@ function colorHex () {
     const nuevoColor = prompt("ingrese nuevo color en formato #HEX");
     figura.style.backgroundColor = nuevoColor;
 }
+
+//14. Elegir figura (prompt) → Con prompt, elegir entre "círculo", "estrella" o "cuadrado"y cambiar la figura.
+function eleccionFigura () {
+    let tuFigura = prompt("cual figura prefieres circulo, estrella o cuadrado");
+    
+    switch (tuFigura) {
+        case circulo:
+                        
+            break;
+           
+            case estrella:
+            
+            break;
+            case cuadrado:
+            
+            break;
+
+    
+        default:
+            alert("digite una figura valida")
+            break;
+    }
+    
+}
+
 
 
 
@@ -103,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*12*/document.getElementById("btnRemoveParagraph").addEventListener("click", eliminarParrafo);
 //ATRIBUTOS
 /*13*/document.getElementById("btnHexColor").addEventListener("click", colorHex);
+/*14*/document.getElementById("btnChooseFigure").addEventListener("click", eleccionFigura);
 
 
 
