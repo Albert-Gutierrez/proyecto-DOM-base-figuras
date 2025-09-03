@@ -60,7 +60,12 @@ function cambiarParrafo () {
     mainParagraph.innerText = nuevoParrafo;
 }
 
+//11. Agregar un párrafo → Insertar dinámicamente un nuevo <p> al final con texto fijo o pedido con prompt.
+function agregarParrafo () {
+   const parrafoExtra = prompt("digita un parrafo extra");
+    extraParagraphs.innerText = parrafoExtra;
 
+}
 
 
 
@@ -74,9 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
 /*6*/document.getElementById("btnMoveDown").addEventListener("click", moverAbajo);
 /*7*/document.getElementById("btnMoveLeft").addEventListener("click", moverIzquierda);
 /*8*/document.getElementById("btnMoveRight").addEventListener("click", moverDerecha);
+//CONTENIDOS
 /*9*/document.getElementById("btnChangeTitle").addEventListener("click", cambiarTitulo);
 /*10*/document.getElementById("btnChangeParagraph").addEventListener("click", cambiarParrafo);
-
+/*11*/document.getElementById("btnAddParagraph").addEventListener("click", agregarParrafo);
 
 
 
