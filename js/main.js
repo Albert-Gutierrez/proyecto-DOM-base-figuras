@@ -27,45 +27,62 @@ function agregarAnimacion() {
 }
 
 //5. hacemos que se mueva hacia arriba
-function moverArriba () {
+function moverArriba() {
     figura.style.transform = "translateY(-50px)";
 }
 
 //6. Mover abajo → Desplaza la figura hacia abajo.
-function moverAbajo () {
+function moverAbajo() {
     figura.style.transform = "translatey(50px)";
 }
 
 //7. Mover izquierda → Desplaza la figura hacia la izquierda.
-function moverIzquierda  () {
+function moverIzquierda() {
     figura.style.transform = "translatex(-50px)";
 }
 
 //8. Mover derecha → Desplaza la figura hacia la derecha.
-function moverDerecha () {
+function moverDerecha() {
     figura.style.transform = "translatex(50px)";
 }
 
 
 //C O N T E N I D O S..................................................................................................................
 //9. Cambiar título (prompt) → Con prompt, pedir un texto nuevo para el título principal y remplazarlo
-function cambiarTitulo (){
-    const nuevoTitulo = prompt("Escribe un nuevo título:");
+function cambiarTitulo() {
+    let nuevoTitulo = prompt("Escribe un nuevo título:");
     mainTitle.textContent = nuevoTitulo;
 }
 
 //10. Cambiar párrafo (prompt) → Con prompt, pedir un texto nuevo y reemplazar el contenido del primer párrafo.
-function cambiarParrafo () {
+function cambiarParrafo() {
     const nuevoParrafo = prompt("escribe un parrafo nuevo");
     mainParagraph.innerText = nuevoParrafo;
 }
 
 //11. Agregar un párrafo → Insertar dinámicamente un nuevo <p> al final con texto fijo o pedido con prompt.
-function agregarParrafo () {
-   const parrafoExtra = prompt("digita un parrafo extra");
+function agregarParrafo() {
+    const parrafoExtra = prompt("digita un parrafo extra");
     extraParagraphs.innerText = parrafoExtra;
-
 }
+
+//12. Eliminar último párrafo → Eliminar el último <p> agregado.
+function eliminarParrafo (){
+    extraParagraphs.remove();
+}
+
+
+//A T R I B U T O S........................................................................................................................
+//13. Color en HEX (prompt) → Con prompt, pedir un color en formato #HEX y aplicarlo como fondo de la figura.
+function colorHex () {
+    const nuevoColor = prompt("ingrese nuevo color en formato #HEX");
+    figura.style.backgroundColor = nuevoColor;
+}
+
+
+
+
+
 
 
 
@@ -83,7 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
 /*9*/document.getElementById("btnChangeTitle").addEventListener("click", cambiarTitulo);
 /*10*/document.getElementById("btnChangeParagraph").addEventListener("click", cambiarParrafo);
 /*11*/document.getElementById("btnAddParagraph").addEventListener("click", agregarParrafo);
-
+/*12*/document.getElementById("btnRemoveParagraph").addEventListener("click", eliminarParrafo);
+//ATRIBUTOS
+/*13*/document.getElementById("btnHexColor").addEventListener("click", colorHex);
 
 
 
