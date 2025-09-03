@@ -23,17 +23,40 @@ function agregarAnimacion() {
     figura.classList.toggle("parpadear");
 }
 
+//hacemos que 
+function moverArriba () {
+    figura.style.transform = "translateY(-50px)";
+}
 
+function moverAbajo () {
+    figura.style.transform = "translatey(50px)";
+}
 
+function moverIzquierda  () {
+    figura.style.transform = "translatex(-50px)";
+}
+
+function moverDerecha () {
+    figura.style.transform = "translatex(50px)";
+}
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
+ //ESTILOS
 /*1*/document.getElementById("btnCircle").addEventListener("click", cambiarCirculo);
 /*2*/document.getElementById("btnStar").addEventListener("click", cambiarEstrella);
 /*3*/document.getElementById("btnGif").addEventListener("click", ponerGif);
 /*4*/document.getElementById("btnAnim").addEventListener("click", agregarAnimacion);
+/*5*/document.getElementById("btnMoveUp").addEventListener("click", moverArriba);
+/*6*/document.getElementById("btnMoveDown").addEventListener("click", moverAbajo);
+/*7*/document.getElementById("btnMoveLeft").addEventListener("click", moverIzquierda);
+/*8*/document.getElementById("btnMoveRight").addEventListener("click", moverDerecha);
+
+
+
+
 
 
 
