@@ -132,8 +132,7 @@ function imagenBack() {
     if (imagenActual < 0) {
         imagenActual = imagenes.length - 1
     }
-    imagen.src
-        = imagenes[imagenActual];
+    imagen.src = imagenes[imagenActual];
 }
 
 //17. Mostrar/Ocultar imagen → Alternar la visibilidad (display: none/block) de la imagen. (se agrego css linea 118)
@@ -158,18 +157,19 @@ function nuevaUrl () {
     urlNueva.setAttribute("href", urlIngresada);
 }
 
+//20. Abrir enlace en nueva pestaña → Forzar que el enlace se abra en otra pestaña con target="_blank".
+function otraPestana () {
+    const pestanaNueva = document.getElementById("mainLink");
 
-
-
-
-
-
-
+    pestanaNueva.setAttribute("target", "_blank");
+    pestanaNueva.setAttribute("href", "https://github.com/Albert-Gutierrez");
+}
 
 //21. Deshabilitar enlace → Quitar el atributo href del <a> para que no sea clickeable.
 function DeshabilitarEnlace () {
     const enlace = document.getElementById("mainLink");
-    enlace.setAttribute("href", "none");
+    enlace.removeAttribute("href");
+    enlace.style.cursor = "not-allowed";
 }
 
 
@@ -199,7 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
 /*18*/document.getElementById("btnChangeAlt").addEventListener("click", cambiarAtributo);
 /*19*/document.getElementById("btnChangeLink").addEventListener("click", nuevaUrl);
 /*20*/document.getElementById("btnOpenLink").addEventListener("click", otraPestana);
-
-
-})
+/*21*/document.getElementById("btnDisableLink").addEventListener("click", DeshabilitarEnlace);
+});
 
