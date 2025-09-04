@@ -16,7 +16,7 @@ function cambiarEstrella() {
 
 //3. colocamos un gif
 function ponerGif() {
-    figura.style.backgroundImage = "url('img/topGun.gif')";
+    figura.style.backgroundImage = "url('img/TopGun.gif')";
     figura.style.backgroundSize = "cover";
 }
 
@@ -184,8 +184,6 @@ function DeshabilitarEnlace() {
 }
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
  //ESTILOS
 /*1*/document.getElementById("btnCircle").addEventListener("click", cambiarCirculo);
@@ -212,4 +210,3 @@ document.addEventListener("DOMContentLoaded", function () {
 /*20*/document.getElementById("btnOpenLink").addEventListener("click", otraPestana);
 /*21*/document.getElementById("btnDisableLink").addEventListener("click", DeshabilitarEnlace);
 });
-
