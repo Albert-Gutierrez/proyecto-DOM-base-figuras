@@ -113,3 +113,8 @@ img{
 .parpadear {
   animation: parpadeo 1s infinite;
 }
+
+/*ejercicio 17*/
+.oculto {
+  display: none;
+}

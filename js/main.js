@@ -1,8 +1,6 @@
 //aca capturo la figura
 const figura = document.getElementById("figure");
 
-
-
 //E S T I L O S.........................................................................................................................
 //1. REALIZAMOS EL CAMBIO DE CUADRADO A CIRCULO
 function cambiarCirculo() {
@@ -21,7 +19,7 @@ function ponerGif() {
     figura.style.backgroundSize = "cover";
 }
 
-//4. Agregar animación → Aplica una animación CSS
+//4. Agregar animación → Aplica una animación CSS.  se agrego css linea 107
 function agregarAnimacion() {
     figura.classList.toggle("parpadear");
 }
@@ -50,22 +48,25 @@ function moverDerecha() {
 //C O N T E N I D O S..................................................................................................................
 //9. Cambiar título (prompt) → Con prompt, pedir un texto nuevo para el título principal y remplazarlo
 function cambiarTitulo() {
+    const cambioTitulo = document.getElementById("mainTitle");
     let nuevoTitulo = prompt("Escribe un nuevo título:");
-    mainTitle.textContent = nuevoTitulo;
+    cambioTitulo.textContent = nuevoTitulo;
 }
 
 //10. Cambiar párrafo (prompt) → Con prompt, pedir un texto nuevo y reemplazar el contenido del primer párrafo.
 function cambiarParrafo() {
-    const nuevoParrafo = prompt("escribe un parrafo nuevo");
-    mainParagraph.innerText = nuevoParrafo;
+    const cambioParrafo = document.getElementById("mainParagraph");
+    let nuevoParrafo = prompt("escribe un parrafo nuevo");
+    cambioParrafo.innerText = nuevoParrafo;
 }
 
 //11. Agregar un párrafo → Insertar dinámicamente un nuevo <p> al final con texto fijo o pedido con prompt.
 function agregarParrafo() {
-    let nuevoParrafo = prompt("escribe un parrafo nuevo");
-    let parrafoExtra = document.createElement("p")
-    parrafoExtra.innerText = nuevoParrafo;
-    extraParagraphs.appendChild(parrafoExtra);
+    const parrafo = document.createElement("p"); // Creao un nuevo <p>
+    document.getElementById("extraParagraphs").appendChild(parrafo);  // Inserto el p dentro del contenedor
+
+    let nuevoParrafo = prompt("escribe un parrafo nuevo"); //se solicita al usuario que digite un nuevo parrafo
+    parrafo.textContent = nuevoParrafo; // Asignar el texto digitado
 }
 
 //12. Eliminar último párrafo → Eliminar el último <p> agregado.
@@ -107,32 +108,68 @@ function eleccionFigura() {
     }
 }
 
-
-
 //15. Cambiar imagen (siguiente) → Reemplazar src de la imagen por la siguiente en un arreglo de imágenes.
 let imagenActual = 0; // Índice inicial,  se declara imagenActual fuera de la función para que se mantenga su valor entre clics:
 
-function ImagenNext (){
+function ImagenNext() {
     const imagenes = ["img/imagen.jpg", "img/imagen2.jpg", "img/imagen3.jpg"]; // Arreglo con las imágenes
     const imagen = document.getElementById("mainImage"); // Capturo la imagen
-    
-    imagenActual++; // Avanzar imagen
-    if (imagenActual >= imagenes.length) {  // Si llegamos al final
+
+    imagenActual++; // Avanzar a la siguiente ímagen (0→1→2…)
+    if (imagenActual >= imagenes.length) {  // permite saber cuantas imagenes hay .lenght y Si llegamos al final
         imagenActual = 0;  // Volver al inicio
     }
-    imagen.src = imagenes[imagenActual]; // Cambiar el src
-} 
+    imagen.src = imagenes[imagenActual]; // Cambiar la imagen en el src
+}
+
 
 //16. Cambiar imagen (atrás) → Reemplazar src de la imagen por la anterior en un arreglo de imágenes.
-function imagenBack () {
+function imagenBack() {
     const imagenes = ["img/imagen.jpg", "img/imagen2.jpg", "img/imagen3.jpg"];
     const imagen = document.getElementById("mainImage");
 
     imagenActual--; //retroceder imagen
     if (imagenActual < 0) {
-        imagenActual = imagenes.length -1       
+        imagenActual = imagenes.length - 1
     }
-    imagen.src = imagenes[imagenActual];
+    imagen.src
+        = imagenes[imagenActual];
+}
+
+//17. Mostrar/Ocultar imagen → Alternar la visibilidad (display: none/block) de la imagen. (se agrego css linea 118)
+function ocultarImagen() {
+    const imagenOculta = document.getElementById("mainImage");
+    imagenOculta.classList.toggle("oculto"); // alterna la clase
+}
+
+//18. Cambiar atributo ALT → Con prompt, pedir un texto y asignarlo como atributo alt de la imagen.
+function cambiarAtributo() {
+    const atributo = document.getElementById("mainImage");
+    let atributoAlt = prompt("texto para asignar como atributo ALT de la imagen:");
+
+    atributo.setAttribute("alt", atributoAlt);
+}
+
+//19. Cambiar enlace (prompt) → Con prompt, pedir una nueva URL y asignarla al <a> (atributo href).
+function nuevaUrl () {
+    const urlNueva = document.getElementById("mainLink");
+    let urlIngresada = prompt("ingrese nueva URL  a asignar:");
+
+    urlNueva.setAttribute("href", urlIngresada);
+}
+
+
+
+
+
+
+
+
+
+//21. Deshabilitar enlace → Quitar el atributo href del <a> para que no sea clickeable.
+function DeshabilitarEnlace () {
+    const enlace = document.getElementById("mainLink");
+    enlace.setAttribute("href", "none");
 }
 
 
@@ -158,6 +195,10 @@ document.addEventListener("DOMContentLoaded", function () {
 /*14*/document.getElementById("btnChooseFigure").addEventListener("click", eleccionFigura);
 /*15*/document.getElementById("btnChangeImageNext").addEventListener("click", ImagenNext);
 /*16*/document.getElementById("btnChangeImagePrev").addEventListener("click", imagenBack);
+/*17*/document.getElementById("btnToggleImage").addEventListener("click", ocultarImagen);
+/*18*/document.getElementById("btnChangeAlt").addEventListener("click", cambiarAtributo);
+/*19*/document.getElementById("btnChangeLink").addEventListener("click", nuevaUrl);
+/*20*/document.getElementById("btnOpenLink").addEventListener("click", otraPestana);
 
 
 })
