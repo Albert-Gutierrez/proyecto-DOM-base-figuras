@@ -56,57 +56,84 @@ function cambiarTitulo() {
 
 //10. Cambiar párrafo (prompt) → Con prompt, pedir un texto nuevo y reemplazar el contenido del primer párrafo.
 function cambiarParrafo() {
-    let nuevoParrafo = prompt("escribe un parrafo nuevo");
+    const nuevoParrafo = prompt("escribe un parrafo nuevo");
     mainParagraph.innerText = nuevoParrafo;
 }
 
 //11. Agregar un párrafo → Insertar dinámicamente un nuevo <p> al final con texto fijo o pedido con prompt.
 function agregarParrafo() {
-    let parrafoExtra = prompt("digita un parrafo extra");
-    extraParagraphs.innerText = parrafoExtra;
+    let nuevoParrafo = prompt("escribe un parrafo nuevo");
+    let parrafoExtra = document.createElement("p")
+    parrafoExtra.innerText = nuevoParrafo;
+    extraParagraphs.appendChild(parrafoExtra);
 }
 
 //12. Eliminar último párrafo → Eliminar el último <p> agregado.
-function eliminarParrafo (){
-    extraParagraphs.remove();
+function eliminarParrafo() {
+    extraParagraphs.lastChild.remove();
 }
 
 
 //A T R I B U T O S........................................................................................................................
 //13. Color en HEX (prompt) → Con prompt, pedir un color en formato #HEX y aplicarlo como fondo de la figura.
-function colorHex () {
-    const nuevoColor = prompt("ingrese nuevo color en formato #HEX");
+function colorHex() {
+    let nuevoColor = prompt("ingrese nuevo color en formato #HEX");
     figura.style.backgroundColor = nuevoColor;
 }
 
 //14. Elegir figura (prompt) → Con prompt, elegir entre "círculo", "estrella" o "cuadrado"y cambiar la figura.
-function eleccionFigura () {
-    let tuFigura = prompt("cual figura prefieres circulo, estrella o cuadrado");
-    
+function eleccionFigura() {
+    let tuFigura = prompt("¿cual figura prefieres? circulo, estrella o cuadrado");
+
     switch (tuFigura) {
-        case circulo:
-                        
-            break;
-           
-            case estrella:
-            
-            break;
-            case cuadrado:
-            
+        case "circulo":
+            figura.style.clipPath = "none"; // por si tenía estrella antes
+            figura.style.borderRadius = "50%";
             break;
 
-    
+        case "estrella":
+            figura.style.borderRadius = "0"; // por si estaba en círculo
+            figura.style.clipPath = "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)";
+            break;
+
+        case "cuadrado":
+            figura.style.borderRadius = "0";
+            figura.style.clipPath = "none"; // vuelve a ser un cuadrado4
+
+            break;
         default:
-            alert("digite una figura valida")
+            alert("Por favor digita una figura válida: circulo, estrella o cuadrado")
             break;
     }
-    
 }
 
 
 
+//15. Cambiar imagen (siguiente) → Reemplazar src de la imagen por la siguiente en un arreglo de imágenes.
+let imagenActual = 0; // Índice inicial,  se declara imagenActual fuera de la función para que se mantenga su valor entre clics:
 
+function ImagenNext (){
+    const imagenes = ["img/imagen.jpg", "img/imagen2.jpg", "img/imagen3.jpg"]; // Arreglo con las imágenes
+    const imagen = document.getElementById("mainImage"); // Capturo la imagen
+    
+    imagenActual++; // Avanzar imagen
+    if (imagenActual >= imagenes.length) {  // Si llegamos al final
+        imagenActual = 0;  // Volver al inicio
+    }
+    imagen.src = imagenes[imagenActual]; // Cambiar el src
+} 
 
+//16. Cambiar imagen (atrás) → Reemplazar src de la imagen por la anterior en un arreglo de imágenes.
+function imagenBack () {
+    const imagenes = ["img/imagen.jpg", "img/imagen2.jpg", "img/imagen3.jpg"];
+    const imagen = document.getElementById("mainImage");
+
+    imagenActual--; //retroceder imagen
+    if (imagenActual < 0) {
+        imagenActual = imagenes.length -1       
+    }
+    imagen.src = imagenes[imagenActual];
+}
 
 
 
@@ -129,7 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
 //ATRIBUTOS
 /*13*/document.getElementById("btnHexColor").addEventListener("click", colorHex);
 /*14*/document.getElementById("btnChooseFigure").addEventListener("click", eleccionFigura);
-
+/*15*/document.getElementById("btnChangeImageNext").addEventListener("click", ImagenNext);
+/*16*/document.getElementById("btnChangeImagePrev").addEventListener("click", imagenBack);
 
 
 })
