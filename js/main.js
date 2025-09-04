@@ -11,6 +11,7 @@ function cambiarCirculo() {
 //2. realizamos el cambio a una estrella
 function cambiarEstrella() {
     figura.style.clipPath = "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)";
+    figura.style.backgroundColor = "green";
 }
 
 //3. colocamos un gif
@@ -22,26 +23,35 @@ function ponerGif() {
 //4. Agregar animación → Aplica una animación CSS.  se agrego css linea 107
 function agregarAnimacion() {
     figura.classList.toggle("parpadear");
+    figura.style.backgroundColor = "red";
 }
 
 //5. hacemos que se mueva hacia arriba
 function moverArriba() {
     figura.style.transform = "translateY(-50px)";
+    figura.style.backgroundColor = "green";
+
 }
 
 //6. Mover abajo → Desplaza la figura hacia abajo.
 function moverAbajo() {
     figura.style.transform = "translatey(50px)";
+    figura.style.backgroundColor = "red";
+
 }
 
 //7. Mover izquierda → Desplaza la figura hacia la izquierda.
 function moverIzquierda() {
     figura.style.transform = "translatex(-50px)";
+    figura.style.backgroundColor = "green";
+
 }
 
 //8. Mover derecha → Desplaza la figura hacia la derecha.
 function moverDerecha() {
     figura.style.transform = "translatex(50px)";
+    figura.style.backgroundColor = "red";
+
 }
 
 
@@ -150,15 +160,16 @@ function cambiarAtributo() {
 }
 
 //19. Cambiar enlace (prompt) → Con prompt, pedir una nueva URL y asignarla al <a> (atributo href).
-function nuevaUrl () {
+function nuevaUrl() {
     const urlNueva = document.getElementById("mainLink");
     let urlIngresada = prompt("ingrese nueva URL  a asignar:");
 
     urlNueva.setAttribute("href", urlIngresada);
 }
 
+
 //20. Abrir enlace en nueva pestaña → Forzar que el enlace se abra en otra pestaña con target="_blank".
-function otraPestana () {
+function otraPestana() {
     const pestanaNueva = document.getElementById("mainLink");
 
     pestanaNueva.setAttribute("target", "_blank");
@@ -166,7 +177,7 @@ function otraPestana () {
 }
 
 //21. Deshabilitar enlace → Quitar el atributo href del <a> para que no sea clickeable.
-function DeshabilitarEnlace () {
+function DeshabilitarEnlace() {
     const enlace = document.getElementById("mainLink");
     enlace.removeAttribute("href");
     enlace.style.cursor = "not-allowed";
